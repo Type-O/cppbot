@@ -4,10 +4,9 @@ project(cppbot)
 # GoogleTest requires at least C++11
 set(CMAKE_CXX_STANDARD 11)
 
-add_library(math src/math.cc)
 add_library(bot src/bot.cc)
 add_executable(cppbot src/main.cc)
-target_link_libraries(cppbot math bot)
+target_link_libraries(cppbot bot)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -21,17 +20,14 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(
-  hello_test
-  test/hello_test.cc
+  bot_test
+  test/cppbot_test.cc
 )
 target_link_libraries(
-  hello_test
+  bot_test
+  bot
   gtest_main
 )
 
-add_executable(math_test test/math_test.cc)
-target_link_libraries(math_test math gtest_main)
-
 include(GoogleTest)
-gtest_discover_tests(hello_test)
-gtest_discover_tests(math_test)
+gtest_discover_tests(bot_test)

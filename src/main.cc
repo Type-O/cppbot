@@ -1,30 +1,20 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <regex>
+#include <list>
+
 #include "math.h"
 #include "bot.h"
 
 using namespace std;
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
 
-    cout << hello_world() << endl;
+    std::cout << "Working diretory: " << argv[0] << std::endl;
+    std::cout << "Atempting to parse file: " <<  argv[1] << std::endl;
 
-    int result;
-
-    result = math::add(1, 2);
-    cout << "add 1 + 2 : " << result << endl;
-
-    result = math::add(4, 2);
-    cout << "add 4 + 2 : " << result << endl;
-
-    result = math::sub(1, 2);
-    cout << "sub 1 - 2 : " << result << endl;
-
-    result = math::sub(4, 2);
-    cout << "sub 4 - 2 : " << result << endl;
-
-    result = math::mul(1, 2);
-    cout << "mul 1 * 2 : " << result << endl;
-
-    result = math::mul(4, 2);
-    cout << "mul 4 * 2 : " << result << endl;
+    Robot robot;
+    robot.run_instructions(robot.parseInstructions(argv[1]));
+    
 }
