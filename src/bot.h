@@ -50,13 +50,14 @@ public:
         m_x = -1;
         m_y = -1;
         m_isPlaced = false;
+        m_dir = -1;
     }
-    std::string report();
+    std::string report(bool verbose = true);
     void rotate_left();
     void rotate_right();
     void place(int x, int y, int dir);
     void move();
-    void run_instructions(std::list<Instruction> list);
+    void run_instructions(std::list<Instruction> list, bool verbose = true);
     std::list<Instruction> parseInstructions(std::string file);
 
 

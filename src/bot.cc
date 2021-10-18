@@ -6,7 +6,7 @@
 #include <list>
 
 
-std::string Robot::report()
+std::string Robot::report(bool verbose)
 {
 	std::string str;
 	if (!m_isPlaced)
@@ -24,7 +24,8 @@ std::string Robot::report()
 			str += "EAST";
 
 	}
-	std::cout << str << std::endl;
+	if(verbose)
+		std::cout << str << std::endl;
 	return str;
 }
 
@@ -75,11 +76,11 @@ void Robot::move()
 	}
 }
 
-void Robot::run_instructions(std::list<Instruction> list)
+void Robot::run_instructions(std::list<Instruction> list, bool verbose)
 {
 	for (auto const& i : list) {
 		if (i.m_type == REPORT)
-			report();
+			report(verbose);
 		else if (i.m_type == PLACE)
 			place(i.m_x, i.m_y, i.m_dir);
 		else if (i.m_type == MOVE)
