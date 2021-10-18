@@ -7,7 +7,7 @@ cmake --build build
 
 build/debug/bot_test.exe
 
-##Try:
+#Try at your convenience:
 
 build/debug/bot_test.exe <path_to_file>/test/IS1.txt
 
